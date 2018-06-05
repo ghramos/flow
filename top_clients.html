@@ -115,17 +115,46 @@
             <h1>Flow Overview</h1>
             <div class="row">
                 <div class="col-lg-6">
-                    <div></div>
-                    <canvas id="line-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <canvas id="pie-chart9" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Protocolos</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pie-chart9-table">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <canvas id="line-chart-proto" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <canvas id="pie-chart10" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>IPs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pie-chart10-table">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
                 <div class="col-lg-6">
-                    <canvas id="bar-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                </div>
-                <div class="col-lg-6">
-                    <canvas id="pie-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <canvas id="pie-chart11" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>IPs</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pie-chart11-table">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -135,7 +164,7 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/loadAndBuild.js"></script>
+    <script src="js/loadAndBuildTopClients.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
