@@ -5,6 +5,40 @@ const apenasHora = flow => flow.hora
 const apenasFlows = flow => flow.flows
 const apenasByt = flow => flow.byt
 
+/* DATA FROM ipByBytes.json */
+fetch('data/ipByBytes.json').then(resp => resp.json()).then(arquivo => {
+  const ips = arquivo.top_10.map(apenasVal)
+  const dados = arquivo.top_10.map(apenasByt)
+
+  //Pie chart
+  new Chart(document.getElementById("pie-chart9"), {
+    type: 'pie',
+    data: {
+      labels: ips,
+      datasets: [{
+        backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#f4f142", "#f142f4", "#f44141", "#f4af41", "#41f467"],
+        data: dados
+      }]
+    },
+    options: {
+      title: {
+        display: true,
+        text: 'Top IPs'
+      }
+    }
+  });
+
+  let str = ""
+  for (let ip in ips) {
+    str += `<tr>
+    <td>${ips[ip]}</td>
+    <td>${dados[ip]}</td>
+    </tr>\n`
+  }
+
+  document.getElementById("pie-chart9-table").innerHTML = str
+})
+
 /* DATA FROM dstipByBytes.json */
 fetch('data/dstipByBytes.json').then(resp => resp.json()).then(arquivo => {
   const ips = arquivo.top_10.map(apenasVal)
@@ -16,7 +50,6 @@ fetch('data/dstipByBytes.json').then(resp => resp.json()).then(arquivo => {
     data: {
       labels: ips,
       datasets: [{
-        label: "Population (millions)",
         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#f4f142", "#f142f4", "#f44141", "#f4af41", "#41f467"],
         data: dados
       }]
@@ -24,7 +57,7 @@ fetch('data/dstipByBytes.json').then(resp => resp.json()).then(arquivo => {
     options: {
       title: {
         display: true,
-        text: 'Top Destinos by Bytes'
+        text: 'Top Destination'
       }
     }
   });
@@ -51,7 +84,6 @@ fetch('data/srcipByBytes.json').then(resp => resp.json()).then(arquivo => {
     data: {
       labels: ips,
       datasets: [{
-        label: "Population (millions)",
         backgroundColor: ["#3e95cd", "#8e5ea2", "#3cba9f", "#e8c3b9", "#c45850", "#f4f142", "#f142f4", "#f44141", "#f4af41", "#41f467"],
         data: dados
       }]
@@ -59,7 +91,7 @@ fetch('data/srcipByBytes.json').then(resp => resp.json()).then(arquivo => {
     options: {
       title: {
         display: true,
-        text: 'Top Origens by Bytes'
+        text: 'Top Source'
       }
     }
   });
