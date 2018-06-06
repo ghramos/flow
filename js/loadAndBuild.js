@@ -18,7 +18,7 @@ fetch('data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
             datasets: [
                 {
                     data: dados,
-                    label: "Fluxo total",
+                    label: "Fluxo",
                     borderColor: "#3e95cd",
                     fill: false
                 }
@@ -27,7 +27,7 @@ fetch('data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
         options: {
             title: {
                 display: true,
-                text: 'Fluxo'
+                text: 'Fluxo total'
             }
         }
     });
@@ -40,7 +40,7 @@ fetch('data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
             datasets: [
                 {
                     data: dados,
-                    label: "Fluxo total",
+                    label: "Fluxo",
                     backgroundColor: "#3e95cd",
                     fill: false
                 }
@@ -49,7 +49,7 @@ fetch('data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
         options: {
             title: {
                 display: true,
-                text: 'Fluxo'
+                text: 'Fluxo total'
             }
         }
     });

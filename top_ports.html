@@ -11,8 +11,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap dataTables CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <!-- Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- Our Custom CSS -->
@@ -109,36 +114,41 @@
                 </div>
             </nav>
 
-            <h1>Flow Overview</h1>
+            <h1>Top Ports</h1>
             <div class="row">
+                <div class="col-lg-3"></div>
                 <div class="col-lg-6">
-                    <div></div>
-                    <canvas id="line-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <canvas id="pie-chart9" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                    <div class="table-responsive">
+                        <table id="table1" class="display compact">
+                            <thead>
+                                <tr>
+                                    <th>Portas</th>
+                                    <th>Número de flows</th>
+                                </tr>
+                            </thead>
+                            <tbody id="pie-chart9-table">
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
-                <div class="col-lg-6">
-                    <canvas id="line-chart-proto" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                </div>
-                <div class="col-lg-6">
-                    <canvas id="bar-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                </div>
-                <div class="col-lg-6">
-                    <canvas id="pie-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                </div>
+                <div class="col-lg-3"></div>
             </div>
         </div>
     </div>
-
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/loadAndBuild.js"></script>
+    <script src="js/loadAndBuildTopPorts.js"></script>
     <script type="text/javascript">
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
+        });
+
+        $(document).ready(function () {
+            $('#table1').DataTable();
         });
     </script>
 </body>

@@ -11,8 +11,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.min.js"></script>
     <!-- Bootstrap CSS CDN -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <!-- jQuery CDN -->
+    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Jquery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Bootstrap dataTables CDN -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.js"></script>
     <!-- Popper.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
     <!-- Our Custom CSS -->
@@ -59,19 +64,25 @@
                 <li>
                     <a href="index.html">Home</a>
                 </li>
-                <li>
+                <!--  <li>
                     <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Pages</a>
                     <ul class="collapse list-unstyled" id="pageSubmenu">
                         <li>
                             <a href="top_clients.html">Top Clients</a>
                         </li>
                         <li>
-                            <a href="#">Page 2</a>
+                            <a href="top_ports.html">Top Portas</a>
                         </li>
                         <li>
                             <a href="#">Page 3</a>
                         </li>
                     </ul>
+                </li> -->
+                <li>
+                    <a href="top_clients.html">Top Clients</a>
+                </li>
+                <li>
+                    <a href="top_ports.html">Top Portas</a>
                 </li>
                 <li>
                     <a href="#">About</a>
@@ -98,43 +109,20 @@
                             <li>
                                 <a href="index.html">Home</a>
                             </li>
-                            <li>
-                                <a href="top_clients.html">Top Clients</a>
-                            </li>
-                            <li>
-                                <a href="#">Page</a>
-                            </li>
-                            <li>
-                                <a href="#">Page</a>
-                            </li>
                         </ul>
                     </div>
                 </div>
             </nav>
-
-            <h1>Flow Overview</h1>
+            <h1>Top Clients</h1>
             <div class="row">
-                <div class="col-lg-6">
-                    <canvas id="pie-chart9" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                    <div class="table-responsive">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Protocolos</th>
-                                </tr>
-                            </thead>
-                            <tbody id="pie-chart9-table">
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
                 <div class="col-lg-6">
                     <canvas id="pie-chart10" width="800" height="350" class="chartjs-render-monitor"></canvas>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="table1" class="display compact">
                             <thead>
                                 <tr>
                                     <th>IPs</th>
+                                    <th>Bytes</th>
                                 </tr>
                             </thead>
                             <tbody id="pie-chart10-table">
@@ -145,10 +133,11 @@
                 <div class="col-lg-6">
                     <canvas id="pie-chart11" width="800" height="350" class="chartjs-render-monitor"></canvas>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table id="table2" class="display compact">
                             <thead>
                                 <tr>
                                     <th>IPs</th>
+                                    <th>Bytes</th>
                                 </tr>
                             </thead>
                             <tbody id="pie-chart11-table">
@@ -159,9 +148,6 @@
             </div>
         </div>
     </div>
-
-    <!-- jQuery CDN -->
-    <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/loadAndBuildTopClients.js"></script>
@@ -171,6 +157,14 @@
                 $('#sidebar').toggleClass('active');
                 $(this).toggleClass('active');
             });
+        });
+
+        $(document).ready(function () {
+            $('#table1').DataTable();
+        });
+
+        $(document).ready(function () {
+            $('#table2').DataTable();
         });
     </script>
 </body>
