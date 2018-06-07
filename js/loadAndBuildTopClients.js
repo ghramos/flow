@@ -40,7 +40,7 @@ fetch('https://191.36.41.203/data/ipByBytes.json').then(resp => resp.json()).the
 })
 
 /* DATA FROM dstipByBytes.json */
-fetch('data/dstipByBytes.json').then(resp => resp.json()).then(arquivo => {
+fetch('https://191.36.41.203/data/dstipByBytes.json').then(resp => resp.json()).then(arquivo => {
   const ips = arquivo.top_10.map(apenasVal)
   const dados = arquivo.top_10.map(apenasByt)
 
@@ -74,7 +74,7 @@ fetch('data/dstipByBytes.json').then(resp => resp.json()).then(arquivo => {
 })
 
 /* DATA FROM srcipByBytes.json */
-fetch('data/srcipByBytes.json').then(resp => resp.json()).then(arquivo => {
+fetch('https://191.36.41.203/data/srcipByBytes.json').then(resp => resp.json()).then(arquivo => {
   const ips = arquivo.top_10.map(apenasVal)
   const dados = arquivo.top_10.map(apenasByt)
 

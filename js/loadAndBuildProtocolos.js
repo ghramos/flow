@@ -50,7 +50,7 @@ fetch('https://191.36.41.203/data/protoByFlowsHistory.json').then(resp => resp.j
 })
 
 /* DATA FROM protoByFlows.json */
-fetch('data/protoByFlows.json').then(resp => resp.json()).then(arquivo => {
+fetch('https://191.36.41.203/data/protoByFlows.json').then(resp => resp.json()).then(arquivo => {
     const protocolos = arquivo.top_10.map(apenasProto)
     const dados = arquivo.top_10.map(apenasFl)
 
