@@ -6,7 +6,7 @@ const apenasFlows = flow => flow.flows
 const apenasByt = flow => flow.byt
 
 /* DATA FROM flowsHistory.json */
-fetch('http://191.36.41.203/data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
+fetch('https://191.36.41.203/data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
     const total = arquivo.top_10.length
 
     const horas = arquivo.top_10.map(apenasHora).slice(total - 288, total)
