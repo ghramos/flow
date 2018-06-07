@@ -6,11 +6,13 @@ const apenasFlows = flow => flow.flows
 const apenasByt = flow => flow.byt
 
 /* DATA FROM protoByFlowsHistory.json */
-fetch('data/protoByFlowsHistory.json').then(resp => resp.json()).then(arquivo => {
-    const horas = arquivo.tcp.map(apenasHora)
-    const tcp = arquivo.tcp.map(apenasFl)
-    const udp = arquivo.udp.map(apenasFl)
-    const icmp = arquivo.icmp.map(apenasFl)
+fetch('http://191.36.41.203/data/protoByFlowsHistory.json').then(resp => resp.json()).then(arquivo => {
+    const total = arquivo.tcp.length
+    const horas = arquivo.tcp.map(apenasHora).slice(total - 288, total)
+    const tcp = arquivo.tcp.map(apenasFl).slice(total - 288, total)
+    const udp = arquivo.udp.map(apenasFl).slice(total - 288, total)
+    const icmp = arquivo.icmp.map(apenasFl).slice(total - 288, total)
+
 
     //Line chart
     new Chart(document.getElementById("line-chart-proto"), {

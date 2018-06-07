@@ -7,7 +7,7 @@ const apenasByt = flow => flow.byt
 const apenasIbyt = flow => flow.ibyt
 
 /* DATA FROM portByFlows.json */
-fetch('data/portByFlows.json').then(resp => resp.json()).then(arquivo => {
+fetch('http://191.36.41.203/data/portByFlows.json').then(resp => resp.json()).then(arquivo => {
   const portas = arquivo.top_10.map(apenasVal)
   const dados = arquivo.top_10.map(apenasFl)
 

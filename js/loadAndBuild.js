@@ -6,9 +6,11 @@ const apenasFlows = flow => flow.flows
 const apenasByt = flow => flow.byt
 
 /* DATA FROM flowsHistory.json */
-fetch('data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
-    const horas = arquivo.top_10.map(apenasHora)
-    const dados = arquivo.top_10.map(apenasFlows)
+fetch('http://191.36.41.203/data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
+    const total = arquivo.top_10.length
+
+    const horas = arquivo.top_10.map(apenasHora).slice(total - 288, total)
+    const dados = arquivo.top_10.map(apenasFlows).slice(total - 288, total)
 
     //Line chart
     new Chart(document.getElementById("line-chart"), {
@@ -20,7 +22,8 @@ fetch('data/flowsHistory.json').then(resp => resp.json()).then(arquivo => {
                     data: dados,
                     label: "Fluxo",
                     borderColor: "#3e95cd",
-                    fill: false
+                    backgroundColor: " #ebf4fa",
+                    fill: true
                 }
             ]
         },

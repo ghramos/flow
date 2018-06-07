@@ -6,7 +6,7 @@ const apenasFlows = flow => flow.flows
 const apenasByt = flow => flow.byt
 
 /* DATA FROM ipByBytes.json */
-fetch('data/ipByBytes.json').then(resp => resp.json()).then(arquivo => {
+fetch('http://191.36.41.203/data/ipByBytes.json').then(resp => resp.json()).then(arquivo => {
   const ips = arquivo.top_10.map(apenasVal)
   const dados = arquivo.top_10.map(apenasByt)
 
