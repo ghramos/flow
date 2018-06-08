@@ -32,7 +32,7 @@ fetch('https://191.36.41.203/data/ipByBytes.json').then(resp => resp.json()).the
   for (let ip in ips) {
     str += `<tr>
     <td>${ips[ip]}</td>
-    <td>${dados[ip]}</td>
+    <td>${(dados[ip] / 1024 / 1024).toFixed(1)} MB</td>
     </tr>\n`
   }
 
@@ -66,7 +66,7 @@ fetch('https://191.36.41.203/data/dstipByBytes.json').then(resp => resp.json()).
   for (let ip in ips) {
     str += `<tr>
     <td>${ips[ip]}</td>
-    <td>${dados[ip]}</td>
+    <td>${(dados[ip] / 1024 / 1024).toFixed(1)} MB</td>
     </tr>\n`
   }
 
@@ -100,7 +100,7 @@ fetch('https://191.36.41.203/data/srcipByBytes.json').then(resp => resp.json()).
   for (let ip in ips) {
     str += `<tr>
     <td>${ips[ip]}</td>
-    <td>${dados[ip]}</td>
+    <td>${(dados[ip] / 1024 / 1024).toFixed(1)} MB</td>
     </tr>\n`
   }
 
