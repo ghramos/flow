@@ -101,10 +101,13 @@
             </nav>
 
             <h1>Flow History</h1>
+            <div class="row text-center">
+                <button type="button" onclick="changeDataTo24()" class="btn btn-primary active">24 Horas</button>
+                <button type="button" onclick="changeDataToWeek()" class="btn btn-primary">1 Semana</button>
+            </div>
             <div class="row">
                 <div class="col-lg-2"></div>
                 <div class="col-lg-8">
-                    <div></div>
                     <canvas id="line-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
                 </div>
                 <div class="col-lg-2"></div>
@@ -125,6 +128,59 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/loadAndBuild.js"></script>
     <script type="text/javascript">
+        changeDataTo24()
+
+        function changeDataTo24() {
+            loadLineGraph(
+                "Fluxo",
+                "Fluxo total",
+                "https://191.36.41.203/data/flowsHistory.json",
+                document.getElementById("line-chart"),
+                "line",
+                1,
+                apenasHora,
+                apenasFlows
+            );
+            loadBarGraph(
+                "Fluxo",
+                "Fluxo total",
+                "https://191.36.41.203/data/flowsHistory.json",
+                document.getElementById("bar-chart"),
+                "bar",
+                1,
+                apenasHora,
+                apenasFlows
+            );
+        };
+
+        function changeDataToWeek() {
+            loadLineGraph(
+                "Fluxo",
+                "Fluxo total",
+                "https://191.36.41.203/data/flowsHistory.json",
+                document.getElementById("line-chart"),
+                "line",
+                7,
+                apenasHora,
+                apenasFlows
+            );
+            loadBarGraph(
+                "Fluxo",
+                "Fluxo total",
+                "https://191.36.41.203/data/flowsHistory.json",
+                document.getElementById("bar-chart"),
+                "bar",
+                7,
+                apenasHora,
+                apenasFlows
+            );
+        };
+
+        $('button').click(function () {
+            $("button").removeClass('active');
+            $(this).toggleClass('active');
+        });
+
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');

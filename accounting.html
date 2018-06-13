@@ -101,23 +101,38 @@
             </nav>
 
             <h1>Accounting History</h1>
-            <div class="row">
-                <div class="col-lg-6">
-                    <div></div>
-                    <canvas id="line-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                </div>
-                <div class="col-lg-6">
-                    <div></div>
-                    <canvas id="line-chart1" width="800" height="350" class="chartjs-render-monitor"></canvas>
-                </div>
+            <div class="row text-center">
+                <button type="button" onclick="changeDataTo24()" class="btn btn-primary active">24 Horas</button>
+                <button type="button" onclick="changeDataToWeek()" class="btn btn-primary">1 Semana</button>
             </div>
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <canvas id="line-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <canvas id="line-chart1" width="800" height="350" class="chartjs-render-monitor"></canvas>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
                     <canvas id="bar-chart" width="800" height="350" class="chartjs-render-monitor"></canvas>
                 </div>
-                <div class="col-lg-6">
+                <div class="col-lg-2"></div>
+
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
                     <canvas id="bar-chart1" width="800" height="350" class="chartjs-render-monitor"></canvas>
                 </div>
+                <div class="col-lg-2"></div>
             </div>
         </div>
     </div>
@@ -126,8 +141,107 @@
     <script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
     <!-- Bootstrap Js CDN -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <script src="js/loadAndBuildAccounting.js"></script>
+    <script src="js/loadAndBuild.js"></script>
     <script type="text/javascript">
+        changeDataTo24()
+
+        function changeDataTo24() {
+            loadLineGraph(
+                "GB",
+                "GB total accumulated",
+                "https://191.36.41.203/data/ipByBytesHistoryAccumulated.json",
+                document.getElementById("line-chart"),
+                "line",
+                1,
+                apenasHora,
+                apenasGBytes,
+                format
+            );
+            loadBarGraph(
+                "GB",
+                "GB total accumulated",
+                "https://191.36.41.203/data/ipByBytesHistoryAccumulated.json",
+                document.getElementById("bar-chart"),
+                "bar",
+                1,
+                apenasHora,
+                apenasGBytes,
+                format
+            );
+            loadLineGraph(
+                "MB",
+                "MB total last 5 minutes",
+                "https://191.36.41.203/data/ipByBytesHistory.json",
+                document.getElementById("line-chart1"),
+                "line",
+                1,
+                apenasHora,
+                apenasMBytes,
+                format
+            );
+            loadBarGraph(
+                "MB",
+                "MB total last 5 minutes",
+                "https://191.36.41.203/data/ipByBytesHistory.json",
+                document.getElementById("bar-chart1"),
+                "bar",
+                1,
+                apenasHora,
+                apenasMBytes,
+                format
+            );
+        };
+
+        function changeDataToWeek() {
+            loadLineGraph(
+                "GB",
+                "GB total accumulated",
+                "https://191.36.41.203/data/ipByBytesHistoryAccumulated.json",
+                document.getElementById("line-chart"),
+                "line",
+                7,
+                apenasHora,
+                apenasGBytes,
+                format
+            );
+            loadBarGraph(
+                "GB",
+                "GB total accumulated",
+                "https://191.36.41.203/data/ipByBytesHistoryAccumulated.json",
+                document.getElementById("bar-chart"),
+                "bar",
+                7,
+                apenasHora,
+                apenasGBytes,
+                format
+            );
+            loadLineGraph(
+                "MB",
+                "MB total last 5 minutes",
+                "https://191.36.41.203/data/ipByBytesHistory.json",
+                document.getElementById("line-chart1"),
+                "line",
+                7,
+                apenasHora,
+                apenasMBytes,
+                format
+            );
+            loadBarGraph(
+                "MB",
+                "MB total last 5 minutes",
+                "https://191.36.41.203/data/ipByBytesHistory.json",
+                document.getElementById("bar-chart1"),
+                "bar",
+                7,
+                apenasHora,
+                apenasMBytes,
+                format
+            );
+        };
+        $('button').click(function () {
+            $("button").removeClass('active');
+            $(this).toggleClass('active');
+        });
         $(document).ready(function () {
             $('#sidebarCollapse').on('click', function () {
                 $('#sidebar').toggleClass('active');
